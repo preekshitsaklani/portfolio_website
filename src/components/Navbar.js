@@ -28,7 +28,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   // Updated logo sources with new file names
-  const logoSrc = darkMode ? "/white_for_dark_mode.ico" : "/black_for_light_mode.ico";
+  const logoSrc = darkMode ? process.env.PUBLIC_URL + "/white_for_dark_mode.ico" : process.env.PUBLIC_URL + "/black_for_light_mode.ico";
   const logoAlt = darkMode ? "Dark Mode Portfolio Logo" : "Light Mode Portfolio Logo";
 
   return (
