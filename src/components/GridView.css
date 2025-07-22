@@ -1,0 +1,230 @@
+/* src/components/GridView.css */
+.grid-view-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.filter-results-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.filter-results-header h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.filter-results-header span {
+  color: rgba(102, 126, 234, 0.8);
+  font-weight: 400;
+}
+
+.grid-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.grid-project-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.grid-project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.grid-project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.grid-project-card:hover::before {
+  opacity: 1;
+}
+
+.grid-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.grid-project-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.grid-colab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.grid-colab-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+}
+
+.grid-project-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.grid-code-snippet {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  overflow-x: auto;
+  position: relative;
+}
+
+.grid-code-snippet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 8px 8px 0 0;
+}
+
+.grid-code-snippet pre {
+  margin: 0;
+  color: #e8e8e8;
+}
+
+.grid-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.grid-tag {
+  padding: 0.3rem 0.7rem;
+  background: rgba(102, 126, 234, 0.15);
+  border: 1px solid rgba(102, 126, 234, 0.25);
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a8b5ff;
+  transition: all 0.3s ease;
+}
+
+.grid-tag:hover {
+  background: rgba(102, 126, 234, 0.25);
+  transform: translateY(-1px);
+}
+
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.no-results h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.no-results p {
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-view-container {
+    padding: 1rem;
+  }
+  
+  .grid-projects {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .grid-project-card {
+    padding: 1.25rem;
+  }
+  
+  .grid-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .grid-project-title {
+    font-size: 1.2rem;
+  }
+  
+  .grid-code-snippet {
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+  
+  .filter-results-header h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-projects {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .grid-project-card {
+    padding: 1rem;
+  }
+  
+  .grid-project-title {
+    font-size: 1.1rem;
+  }
+  
+  .grid-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+}

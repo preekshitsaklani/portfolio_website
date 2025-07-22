@@ -1,0 +1,848 @@
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+/* Projects Section */
+.projects-section {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.projects-container {
+  position: relative;
+  min-height: 500vh;
+  padding: 2rem;
+}
+
+.projects-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stacked Cards Layout */
+.stacked-cards {
+  position: sticky;
+  top: 10vh;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card {
+  position: absolute;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Fixed Z-Index and Interaction Issues */
+.project-card.active {
+  z-index: 10;
+  transform: translateY(0) scale(1) rotateX(0deg);
+  opacity: 1;
+  pointer-events: auto !important;
+}
+
+.project-card.exiting {
+  z-index: 5;
+  transform: translateY(-100px) scale(0.9) rotateX(5deg);
+  opacity: 0;
+  pointer-events: none !important;
+}
+
+.project-card.next {
+  z-index: 4;
+  transform: translateY(20px) scale(0.95) rotateX(-2deg);
+  opacity: 0.8;
+  pointer-events: none !important;
+}
+
+.project-card.hidden {
+  z-index: 3;
+  transform: translateY(40px) scale(0.9) rotateX(-4deg);
+  opacity: 0.6;
+  pointer-events: none !important;
+}
+
+.project-card.far {
+  z-index: 2;
+  transform: translateY(60px) scale(0.85) rotateX(-6deg);
+  opacity: 0.4;
+  pointer-events: none !important;
+}
+
+.project-card.furthest {
+  z-index: 1;
+  transform: translateY(80px) scale(0.8) rotateX(-8deg);
+  opacity: 0.2;
+  pointer-events: none !important;
+}
+
+/* Card Content */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.project-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+/* Enhanced Colab Link - Always Clickable on Active Card */
+.colab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1001 !important;
+  cursor: pointer;
+}
+
+/* Dark/Light Mode Body Classes */
+body.dark-mode {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: #ffffff;
+}
+
+body.light-mode {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  color: #1a1a2e;
+}
+
+/* App Container Modifications */
+.App {
+  padding-top: 80px;
+  transition: all 0.3s ease;
+}
+
+.App.dark-mode {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: #ffffff;
+}
+
+.App.light-mode {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  color: #1a1a2e;
+}
+
+/* Hero Section Dark/Light Mode */
+.App.dark-mode .hero-section {
+  background: radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%);
+  color: #ffffff;
+}
+
+.App.light-mode .hero-section {
+  background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.2) 0%, transparent 50%);
+  color: #1a1a2e;
+}
+
+/* Projects Section Dark/Light Mode */
+.App.light-mode .projects-section {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.App.light-mode .projects-title {
+  color: #1a1a2e;
+}
+
+.App.light-mode .project-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1a1a2e;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+.App.light-mode .project-title {
+  color: #1a1a2e;
+}
+
+.App.light-mode .code-snippet {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.App.light-mode .code-snippet pre {
+  color: #2d3748;
+}
+
+.App.light-mode .tag {
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  color: #4c51bf;
+}
+
+.App.light-mode .tag:hover {
+  background: rgba(102, 126, 234, 0.2);
+}
+
+/* Toggle Buttons Light Mode */
+.App.light-mode .toggle-button {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(26, 26, 46, 0.8);
+}
+
+.App.light-mode .toggle-button.active {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+}
+
+/* Filter Section Light Mode */
+.App.light-mode .filter-section {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.App.light-mode .filter-title {
+  color: #1a1a2e;
+}
+
+.App.light-mode .filter-tag {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(26, 26, 46, 0.8);
+}
+
+.App.light-mode .filter-tag:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.App.light-mode .filter-tag.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+/* Grid View Light Mode */
+.App.light-mode .grid-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1a1a2e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.App.light-mode .grid-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Fixed Pointer Events for All Cards */
+.project-card.active {
+  pointer-events: auto !important;
+}
+
+.project-card.exiting,
+.project-card.next,
+.project-card.hidden,
+.project-card.far,
+.project-card.furthest {
+  pointer-events: none !important;
+}
+
+/* Enhanced Z-Index Management */
+.project-card.active {
+  z-index: 10;
+}
+
+.project-card.exiting {
+  z-index: 5;
+}
+
+.project-card.next {
+  z-index: 4;
+}
+
+.project-card.hidden {
+  z-index: 3;
+}
+
+.project-card.far {
+  z-index: 2;
+}
+
+.project-card.furthest {
+  z-index: 1;
+}
+
+
+
+.colab-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+  cursor: pointer;
+}
+
+.code-snippet {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-snippet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 12px 12px 0 0;
+}
+
+.code-snippet pre {
+  margin: 0;
+  color: #e8e8e8;
+}
+
+/* Enhanced Tags Container */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  padding: 0.4rem 0.8rem;
+  background: rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a8b5ff;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1000;
+  cursor: default;
+}
+
+.tag:hover {
+  background: rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+}
+
+/* View All Button - Fixed positioning */
+.view-all-button-container {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  animation: slideUpExpand 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  pointer-events: auto;
+}
+
+.view-all-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.view-all-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.view-all-button:hover::before {
+  left: 100%;
+}
+
+.view-all-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+}
+
+.button-text {
+  font-weight: 600;
+}
+
+.button-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.view-all-button:hover .button-arrow {
+  transform: translateX(5px);
+}
+
+/* Button animation */
+@keyframes slideUpExpand {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px) scale(0.3);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(15px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* View Toggle */
+.view-toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.view-toggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.toggle-button {
+  padding: 0.8rem 1.5rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+  background: linear-gradient(135deg, #a855f7, #8b5cf6);
+  color: white;
+}
+
+/* Filter Section */
+.filter-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.filter-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.filter-tag {
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filter-tag:hover {
+  background: rgba(102, 126, 234, 0.3);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+.filter-tag.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: rgba(102, 126, 234, 0.8);
+  color: white;
+}
+
+/* Grid View */
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.grid-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  height: fit-content;
+}
+
+.grid-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove Scroll Spacer Height for Contact Section */
+.scroll-spacer {
+  height: 150vh;
+}
+
+/* Ensure no extra bottom margin on App container */
+.App {
+  min-height: 100vh;
+  position: relative;
+  margin-bottom: 0 !important;
+}
+
+/* Remove any extra padding from body */
+body {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0 !important;
+}
+
+/* Ensure contact section is the final element */
+.contact-section {
+  margin-bottom: 0 !important;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .projects-container {
+    padding: 1rem;
+  }
+  
+  .project-card {
+    height: 550px;
+    padding: 1.5rem;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+  }
+  
+  .stacked-cards {
+    height: 650px;
+  }
+  
+  .view-all-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    height: 600px;
+    padding: 1rem;
+  }
+  
+  .code-snippet {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+  
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .view-all-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Hero Logo with Enhanced Tooltip - Larger Size Version */
+.hero-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.hero-logo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Significantly Enlarged Logo */
+.hero-logo {
+  width: 220px !important;
+  height: 220px !important;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 20px;
+  padding: 20px; /* Increased padding */
+}
+
+.App.dark-mode .hero-logo {
+  filter: drop-shadow(0 15px 30px rgba(102, 126, 234, 0.5));
+}
+
+.App.light-mode .hero-logo {
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+}
+
+.hero-logo:hover {
+  transform: scale(1.08) rotateY(5deg);
+}
+
+.App.dark-mode .hero-logo:hover {
+  filter: drop-shadow(0 18px 40px rgba(102, 126, 234, 0.7));
+}
+
+.App.light-mode .hero-logo:hover {
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.5));
+}
+
+/* Enhanced Width-Heavy Tooltip Styles */
+.logo-tooltip {
+  position: absolute;
+  bottom: -85px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 15, 35, 0.96);
+  color: #ffffff;
+  padding: 18px 28px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  width: 420px;
+  max-width: 90vw;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.4);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Light mode tooltip */
+.App.light-mode .logo-tooltip {
+  background: rgba(255, 255, 255, 0.96);
+  color: #1a1a2e;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* Enhanced tooltip arrow */
+.logo-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid rgba(15, 15, 35, 0.96);
+}
+
+.App.light-mode .logo-tooltip::before {
+  border-bottom-color: rgba(255, 255, 255, 0.96);
+}
+
+/* Show tooltip on hover with enhanced animation */
+.hero-logo-wrapper:hover .logo-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-15px);
+  white-space: normal;
+}
+
+/* Enhanced tooltip animation */
+@keyframes tooltipFadeInWide {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-15px) scale(1);
+  }
+}
+
+.hero-logo-wrapper:hover .logo-tooltip {
+  animation: tooltipFadeInWide 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Enhanced Responsive Design for Larger Logo */
+@media (max-width: 968px) {
+  .hero-logo {
+    width: 190px !important;
+    height: 190px !important;
+  }
+  
+  .logo-tooltip {
+    width: 380px;
+    font-size: 0.95rem;
+    padding: 16px 24px;
+    bottom: -80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    width: 170px !important;
+    height: 170px !important;
+  }
+  
+  .logo-tooltip {
+    width: 350px;
+    font-size: 0.9rem;
+    padding: 14px 22px;
+    bottom: -75px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  .logo-tooltip {
+    width: 320px;
+    font-size: 0.85rem;
+    padding: 12px 20px;
+    bottom: -70px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-logo {
+    width: 130px !important;
+    height: 130px !important;
+  }
+  
+  .logo-tooltip {
+    width: 300px;
+    font-size: 0.8rem;
+    padding: 10px 18px;
+    bottom: -65px;
+  }
+}
