@@ -235,7 +235,7 @@ function App() {
         <div className="hero-logo-container">
           <div className="hero-logo-wrapper">
             <img 
-              src={darkMode ? "/public/white_for_dark_mode.ico" : "/public/black_for_light_mode.ico"}
+              src={darkMode ? "/white_for_dark_mode.ico" : "/black_for_light_mode.ico"}
               alt="AI/ML Portfolio Logo"
               className="hero-logo"
             />
